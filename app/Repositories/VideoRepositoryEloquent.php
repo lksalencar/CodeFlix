@@ -2,11 +2,13 @@
 
 namespace CodeFlix\Repositories;
 
+use CodeFlix\Media\ThumbUploads;
+use CodeFlix\Media\Uploads;
+use CodeFlix\Media\VideoUploads;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use CodeFlix\Repositories\VideoRepository;
 use CodeFlix\Models\Video;
-use CodeFlix\Validators\VideoValidator;
+
 
 /**
  * Class VideoRepositoryEloquent
@@ -14,6 +16,17 @@ use CodeFlix\Validators\VideoValidator;
  */
 class VideoRepositoryEloquent extends BaseRepository implements VideoRepository
 {
+    use ThumbUploads, VideoUploads, Uploads;
+
+     public function update(array $attributes, $id)
+     {
+         $model = parent::update($attributes, $id);
+         if (isset($attributes['categories'])){
+             $model->categories()->sync($attributes['categories']);
+         }
+         return $model;
+     }
+
     /**
      * Specify Model class name
      *

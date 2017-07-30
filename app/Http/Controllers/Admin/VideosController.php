@@ -80,7 +80,7 @@ class VideosController extends Controller
      */
     public function show(Video $video)
     {
-
+        return view('admin.videos.show', compact('video'));
     }
 
     /**
@@ -127,9 +127,22 @@ class VideosController extends Controller
      * @param  \CodeFlix\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy($id)
     {
-        //
+        $this->repository->delete($id);
+        return redirect()->route('admin.videos.index');
+    }
+    public function fileAsset(Video $video)
+    {
+        return response()->download($video->file_path);
+    }
+    public function thumbAsset(Video $video)
+    {
+        return response()->download($video->thumb_path);
+    }
+    public function thumbSmallAsset(Video $video)
+    {
+        return response()->download($video->thumb_small_path);
     }
 
 }

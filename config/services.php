@@ -28,6 +28,11 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
+    'facebook' => [
+        'client_id' => '410346219362259',
+        'client_secret' => '7c04f358e69daa6950f51ad464bffb31',
+        'redirect' => 'http://localhost:8000/awesome'
+    ],
 
     'stripe' => [
         'model' => \CodeFlix\Models\User::class,

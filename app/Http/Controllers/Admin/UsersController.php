@@ -68,6 +68,7 @@ class UsersController extends Controller
 
         }
         $data = $form->getFieldValues();
+        $data['role'] = User::ROLE_ADMIN;
         $this->repository->create($data);
         $request->session()->flash('message', 'Usuário criado com sucesso!');
         return redirect()->route('admin.users.index');
@@ -129,6 +130,8 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param Request $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request ,$id)
