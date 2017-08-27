@@ -10,8 +10,8 @@
             {!!
                Table::withContents($categories->items())->striped()->bordered()
                ->callback('Ações', function ($field, $category){
-                  $linkEdit = route('admin.categories.edit',['user' => $category->id]);
-                  $linkShow = route('admin.categories.show',['user' => $category->id]);
+                  $linkEdit = route('admin.categories.edit',['category' => $category->id]);
+                  $linkShow = route('admin.categories.show',['category' => $category->id]);
                   return Button::link(Icon::create('pencil'))->asLinkTo($linkEdit).'|'.
                               Button::link(Icon::create('remove'))->asLinkTo($linkShow);
                })

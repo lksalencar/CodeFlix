@@ -26,6 +26,13 @@
                    ['link' => route('admin.categories.index'), 'title' => 'Categorias'],
                    ['link' => route('admin.series.index'), 'title' => 'Séries'],
                    ['link' => route('admin.videos.index'), 'title' => 'Vídeos'],
+                   [
+                       'Vendas',
+                       [
+                           ['link' => route('admin.plans.index'), 'title' => 'Plano'],
+                           ['link' => route('admin.web_profiles.index'), 'title' => 'Perfil PayPal'],
+                       ]
+                   ]
                ];
                $menus = Navigation::links($arrayLinks);
                $menuRight = Navigation::links([[
